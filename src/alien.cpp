@@ -1,6 +1,6 @@
 #include "alien.h"
 #include "palette.h"
-#include "stdlib.h"
+#include <cstdlib>
 
 Alien::Alien(int x) :
   m_x(x),

@@ -1,9 +1,14 @@
 #ifndef EADK_H
 #define EADK_H
 
-#include <stdint.h>
+#include <cstdint>
+#include <cstddef>
+
+extern "C" void *_heap_start;
 
 namespace EADK {
+
+constexpr size_t HEAP_SIZE = 96000;
 
 namespace Display {
 

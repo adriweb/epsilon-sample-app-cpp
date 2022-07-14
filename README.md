@@ -64,7 +64,8 @@ Optionally, if the external app needs custom binary data, it can reference the `
 
 The NumWorks calculator runs [Epsilon](http://github.com/numworks/epsilon), a tailor-made calculator operating system. Starting from version 16, Epsilon allows installing custom binary apps. To run this sample app, make sure your calculator is up-to-date by visiting <https://my.numworks.com>.
 
-Due to the embedded nature of Epsilon, this C++ app is built using `-ffreestanding -nostdinc -nostdlib`. The interface that an app can use to interact with the OS is essentially a short list of system calls. Feel free to browse the [code of Epsilon](http://github.com/numworks/epsilon) itself if you want to get an in-depth look.
+Normally, due to the embedded nature of Epsilon, this C++ app is built using `-nostdinc -nostdlib` in addition to `-ffreestanding`. The interface that an app can use to interact with the OS is essentially a short list of system calls. Feel free to browse the [code of Epsilon](http://github.com/numworks/epsilon) itself if you want to get an in-depth look.
+However, this specific branch shows how to use newlib-nano, and without these flags, to be able to build your app with a larger standard library. 
 
 Please note that any custom app is removed when resetting the calculator.
 

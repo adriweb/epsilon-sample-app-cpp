@@ -17,11 +17,11 @@ src = $(addprefix src/,\
 )
 
 SFLAGS = -I. -Isrc -Os -Wall -MD -MP -ggdb3 -mthumb -mfloat-abi=hard -mcpu=cortex-m7 -mfloat-abi=hard -mfpu=fpv5-sp-d16
-SFLAGS += -fno-common -fdata-sections -ffunction-sections -ffreestanding -nostdinc -nostdlib
+SFLAGS += -fno-common -fdata-sections -ffunction-sections -ffreestanding
 CFLAGS = -std=c11
 CXXFLAGS = -std=c++11 -fno-exceptions -fno-rtti -fno-threadsafe-statics
 LDFLAGS = -Wl,-Ur
-LDFLAGS += --specs=nosys.specs -nostartfiles
+LDFLAGS += --specs=nosys.specs --specs=nano.specs -u _printf_float -nostartfiles
 LDFLAGS_END = -lm
 
 .PHONY: all

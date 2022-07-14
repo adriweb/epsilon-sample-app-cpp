@@ -12,6 +12,8 @@ extern "C" void _eadk_main();
  * external .o defining eadk_external_data in order to bin the executable. */
 // extern "C" const unsigned char eadk_external_data[];
 
+void *end; // Needed symbol for linking (libnosys/sbrk.c needs it)
+
 void checkForSpaceshipAlienCollisions(Alien aliens[], int numberOfAliens, Spaceship * spaceship) {
   for (int i = 0; i < numberOfAliens; i++) {
     if (aliens[i].tryToHit(spaceship)) {
@@ -22,6 +24,9 @@ void checkForSpaceshipAlienCollisions(Alien aliens[], int numberOfAliens, Spaces
 }
 
 void _eadk_main() {
+  // necessary at the start to do this (sbrk relies on it)
+  end = reinterpret_cast<void *>((uintptr_t) _heap_start + (uintptr_t) EADK::HEAP_SIZE);
+
   EADK::Display::pushRectUniform(EADK::Display::Rect(0, 0, Display::Width, Display::Height), Black);
 
   constexpr int k_maxNumberOfAliens = 10;

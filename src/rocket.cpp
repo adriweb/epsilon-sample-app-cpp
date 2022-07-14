@@ -1,7 +1,7 @@
 #include "rocket.h"
 #include "alien.h"
 #include "palette.h"
-#include "stdlib.h"
+#include <cstdlib>
 
 void Rocket::setLocation(int x, int y) {
   m_x = x;
